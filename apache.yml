@@ -1,0 +1,19 @@
+---
+- name: Send file
+  hosts: all
+  become: yes
+  tasks:
+    - name: Change index
+      ansible.builtin.copy:
+        src: /home/ivan/Документы/index.html
+        dest: /var/www/html
+        remote_src: no
+      notify:
+        - Restart apache
+
+  handlers:
+    - name: Restart apache
+      ansible.builtin.service:
+        name: apache
+        state: restarted
+...
