@@ -1,0 +1,16 @@
+---
+- name: ping
+  hosts: all
+  become: yes
+
+  tasks:
+  - name: Ping  
+    ping:
+  - name: Update
+    apt:
+      upgrade: dist
+  - name: Install webserver
+    apt:
+      name: "apache2"
+      state: latest 
+...
