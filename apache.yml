@@ -9,7 +9,12 @@
         dest: /var/www/html
         remote_src: no
       notify:
-        - Restart apache
+        - Restart apache   
+    - name: Change bot
+      ansible.builtin.copy:
+        src: /home/ivan/Документы/bot1.py
+        dest: /home/bots
+        remote_src: no
 
   handlers:
     - name: Restart apache
